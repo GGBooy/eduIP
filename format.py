@@ -30,8 +30,11 @@ def getIpCidr(content):
 def createYaml(ipCidr):
     ip = ['IP-CIDR,'+item+',HUST,no-resolve' for item in ipCidr]
     import yaml
-    with open('ip.yaml', 'w') as f:
-        yaml.dump({'rules': ip}, f)
+    # 带有两个空格的缩进
+    yaml_content = yaml.dump({'prepend-rules': ip}, indent=2)
+    with open('hust.yaml', 'w') as f:
+        f.write(yaml_content)
+    
 
 
 
